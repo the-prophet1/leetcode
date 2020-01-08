@@ -5,6 +5,8 @@ type ListNode struct {
 	Next *ListNode
 }
 
+//同时遍历２条链表进行相加，同时进位再下一次相加中额外加１
+//时间复杂度O(n),空间复杂度O(n)
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	pt1 := l1
 	pt2 := l2
