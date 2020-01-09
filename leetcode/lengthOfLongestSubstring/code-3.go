@@ -4,7 +4,7 @@ package main
 //每遇到一个字符则与之前边框内的字符进行比较
 //若为新字符则把右边框右移
 //若不为新字符则把左边框移到边框内相同字符的右边一位并将其设置为左边框
-
+//时间复杂度为O(n),空间复杂度为O(1)
 func lengthOfLongestSubstring(s string) int {
 	if len(s) == 1 { //字符串长度为１
 		return 1
