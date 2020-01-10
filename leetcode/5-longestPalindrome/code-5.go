@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+//中心扩散法求最长回文串
 func longestPalindrome(s string) string {
 	if len(s) == 0 || len(s) == 1 {
 		return s
@@ -67,7 +68,6 @@ func longestPalindrome(s string) string {
 			result = append(result, s[index+i])
 		}
 	}
-
 	return string(result)
 }
 
