@@ -7,11 +7,8 @@ func removeDuplicates(nums []int) int {
 	for i := 0; i < len(nums); i++ {
 		if count == 0 {
 			count++
-			continue
 		} else {
-			if nums[i] == nums[i-1] {
-				continue
-			} else {
+			if nums[i] != nums[i-1] {
 				nums[count] = nums[i]
 				count++
 			}
