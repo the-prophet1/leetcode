@@ -25,5 +25,5 @@ func reverse(x int) int {
 }
 
 func main() {
-	fmt.Println(reverse(1534236469))
+	fmt.Println(reverse(123456789))
 }
