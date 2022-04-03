@@ -29,15 +29,12 @@ import "fmt"
 0 <= s.length <= 3 * 104
 s[i] 为 '(' 或 ')'
 
+使用一个栈进行匹配
+栈中保存左括号的下标
 */
 
-type stackElem struct {
-	char  uint8
-	index int
-}
-
 type stack struct {
-	s []stackElem
+	s []int
 }
 
 func longestValidParentheses(s string) int {
@@ -47,14 +44,14 @@ func longestValidParentheses(s string) int {
 	for i := 0; i < len(s); i++ {
 		char := s[i]
 		if char == '(' {
-			st.push(char, i)
+			st.push(i)
 		}
 		if char == ')' {
 			if !st.isNil() {
 				//括号匹配上了
 				tags[i] = true
 				e := st.pop()
-				tags[e.index] = true
+				tags[e] = true
 			}
 		}
 	}
@@ -73,14 +70,11 @@ func longestValidParentheses(s string) int {
 }
 
 func newStack() *stack {
-	return &stack{s: []stackElem{}}
+	return &stack{s: []int{}}
 }
 
-func (st *stack) push(s uint8, index int) {
-	st.s = append(st.s, stackElem{
-		char:  s,
-		index: index,
-	})
+func (st *stack) push(index int) {
+	st.s = append(st.s, index)
 }
 
 func (st *stack) isNil() bool {
@@ -90,7 +84,7 @@ func (st *stack) isNil() bool {
 	return false
 }
 
-func (st *stack) pop() stackElem {
+func (st *stack) pop() int {
 	ret := st.s[len(st.s)-1]
 	st.s = st.s[:len(st.s)-1]
 	return ret
