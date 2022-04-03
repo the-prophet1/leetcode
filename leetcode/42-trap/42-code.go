@@ -18,6 +18,7 @@ func trap(height []int) int {
 	leftMaxHeight := make([]int, len(height))
 	rightMaxHeight := make([]int, len(height))
 	maxHeight := 0
+	//计算当前位置左边的墙的最高
 	for i := 0; i < len(height); i++ {
 		leftMaxHeight[i] = maxHeight
 		if height[i] > maxHeight {
@@ -25,6 +26,8 @@ func trap(height []int) int {
 		}
 	}
 	maxHeight = 0
+
+	//计算当前位置右边的墙的最高
 	for i := len(height) - 1; i >= 0; i-- {
 		rightMaxHeight[i] = maxHeight
 		if height[i] > maxHeight {
@@ -34,6 +37,7 @@ func trap(height []int) int {
 
 	res := 0
 	for i := 1; i < len(height)-1; i++ {
+		//计算每个下标可以接多少水
 		if height[i] < min(leftMaxHeight[i], rightMaxHeight[i]) {
 			res += min(leftMaxHeight[i], rightMaxHeight[i]) - height[i]
 		}
