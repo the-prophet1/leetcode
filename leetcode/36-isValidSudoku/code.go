@@ -20,23 +20,23 @@ package main
 
 func isValidSudoku(board [][]byte) bool {
 	//每行出现数字
-	rows := [9][9]byte{}
+	rows := [9][9]bool{}
 
 	//每列出现的数字
-	columns := [9][9]byte{}
+	columns := [9][9]bool{}
 
 	//每个九宫格出现的数字
-	box := [9][9]byte{}
+	box := [9][9]bool{}
 
 	for i := 0; i < len(board); i++ {
 		for j := 0; j < len(board[0]); j++ {
 			if board[i][j] != '.' { //有数字
-				if rows[i][board[i][j]-'1'] != 0 || columns[j][board[i][j]-'1'] != 0 || box[(i/3*3)+j/3][board[i][j]-'1'] != 0 {
+				if rows[i][board[i][j]-'1'] != false || columns[j][board[i][j]-'1'] != false || box[(i/3*3)+j/3][board[i][j]-'1'] != false {
 					return false
 				} else {
-					rows[i][board[i][j]-'1'] = 1
-					columns[j][board[i][j]-'1'] = 1
-					box[(i/3*3)+j/3][board[i][j]-'1'] = 1
+					rows[i][board[i][j]-'1'] = true
+					columns[j][board[i][j]-'1'] = true
+					box[(i/3*3)+j/3][board[i][j]-'1'] = true
 				}
 			}
 		}
