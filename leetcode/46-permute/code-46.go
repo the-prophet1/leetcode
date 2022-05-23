@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /*
 给定一个没有重复数字的序列，返回其所有可能的全排列。
 
@@ -79,8 +77,4 @@ func permute(nums []int) [][]int {
 }
 
 func main() {
-	arr := []int{5, 4, 6, 2}
-	fmt.Println(len(arr))
-	arr = append(arr[:2])
-	fmt.Println(len(arr))
 }
